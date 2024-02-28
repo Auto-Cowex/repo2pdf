@@ -16,8 +16,6 @@ import {
   universalExcludedNames,
 } from "./universalExcludes";
 
-import { configQuestions } from "./configHandler";
-
 //@ts-ignore
 import type chalkType from "chalk";
 //@ts-ignore
@@ -43,7 +41,30 @@ Promise.all([
     chalk = chalkModule;
     inquirer = inquirerModule;
     spinner.succeed("Setup complete");
-    configQuestions(main, chalk, inquirer);
+    const repoPath = "https://github.com/zauberzeug/nicegui/";
+    const useLocalRepo = false;
+    const addLineNumbers = true; // Set to true or false as needed
+    const addHighlighting = true; // Set to true or false as needed
+    const addPageNumbers = true; // Set to true or false as needed
+    const removeComments = true; // Set to true or false as needed
+    const removeEmptyLines = true; // Set to true or false as needed
+    const onePdfPerFile = false; // Set to true or false as needed
+    const outputFileName = "output.pdf"; // Set the output file name as needed
+    const outputFolderName = "./output"; // Set the output folder name as needed
+    const keepRepo = false; // Set to true or false as needed
+    main(
+      repoPath,
+      useLocalRepo,
+      addLineNumbers,
+      addHighlighting,
+      addPageNumbers,
+      removeComments,
+      removeEmptyLines,
+      onePdfPerFile,
+      outputFileName,
+      outputFolderName,
+      keepRepo,
+    );
   })
   .catch((err) => {
     spinnerPromise.then((spinner) => {
